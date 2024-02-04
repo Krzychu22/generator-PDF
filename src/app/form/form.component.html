@@ -1,0 +1,68 @@
+<div class="page">
+  <div class="header">
+    <p>Super Produkty Sportowe Sp. z o.o</p>
+    <span class="cityAndData">
+        <form-input
+          [htmlStr]="'Warszawa'"
+          [placeholder]="'Miejscowość'"
+          [_minWith]="true"
+          [blockEnter]="true"
+        ></form-input>
+        ,&nbsp;
+        <form-input
+          [htmlStr]="'2024-02-29'"
+          [placeholder]="'Data'"
+          [_minWith]="true"
+          [blockEnter]="true"
+        ></form-input>
+      </span>
+  </div>
+  <div class="addresses">
+    <div *ngFor="let address of addresses; index as i">
+      <p>
+        Imię i nazwisko: {{ address.name }}
+      </p>
+      <p>
+        Ulica: {{ address.street }}
+      </p>
+      <p>
+        Kod pocztowy i miejscowość: {{ address.zipCode }}
+      </p>
+      <button class="icon" mat-mini-fab (click)="removeAddress(i)">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button (click)="addNewAddress()">Dodaj adres</button>
+    </div>
+  </div>
+  <div class="title">
+    <form-input
+      [htmlStr]="'Zamówienie produktów sportowych'"
+      [placeholder]="'Tytuł'"
+      [_minWith]="true"
+      [textAlign]="'center'"
+      [_fontSize]="20"
+    ></form-input>
+  </div>
+  <div class="content" [style]="editor.showToolbar ? 'margin-top: 0px' :  'margin-top: 41px'">
+    <angular-editor
+      [placeholder]="'Treść wiadomości'"
+      [(ngModel)]="html"
+      [config]="editor"
+      (focusin)="tornOnToolbar()"
+      (focusout)="tornOffToolbar()"
+      (mousedown)="blockLosingFocus()"
+      (mouseup)="unlockLosingFocus()"
+    ></angular-editor>
+  </div>
+  <app-product-list></app-product-list>
+  <div class="footer">
+    <p>Zbigniew Tenis-Ziemny</p>
+    <p>ekspert ds. sprzedaży</p>
+    <p>tel. 123-456-789</p>
+    <p>mail:&nbsp;<a href = "mailto: ziemny@superproduktysportowe.pl">{{ 'zbigniew.tenis - ziemny@superproduktysportowe.pl' }}</a></p>
+    <p>Super Produkty Sportowe Sp. z o.o</p>
+  </div>
+</div>
+<button class="printHTML" mat-raised-button (click)="getResultantHTML()">Drukuj HTML</button>

@@ -1,0 +1,21 @@
+:host {
+  textarea {
+    max-width: 100%;
+    min-width: 20px;
+    border: none;
+    padding: 2px;
+    margin-top: 7px;
+    cursor: text;
+    overflow-wrap: anywhere;
+    resize: none;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    font: 400 14px/20px Roboto, sans-serif;
+
+  }
+
+  textarea:focus {
+    outline-color: gray;
+  }
+}

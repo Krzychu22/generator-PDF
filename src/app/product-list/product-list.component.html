@@ -1,0 +1,93 @@
+<div [formGroup]="form">
+  <ng-container formArrayName="sections">
+    <div *ngFor="let sectionForm of sections.controls; index as i">
+      <ng-container [formGroup]="sectionForm">
+        <p class="title">
+          <form-input
+            [textAlign]="'center'"
+            [_minWith]="true"
+            formControlName="title"
+            placeholder="Tytuł sekcji"
+            [_fontSize]="20"
+          ></form-input>
+          <button class="icon" mat-mini-fab (click)="removeSection(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </p>
+        <p>
+          <ng-container formArrayName="section">
+            <table>
+              <thead style="width: 100%">
+              <tr>
+                <th style="width: 30%">Nazwa</th>
+                <th style="width: 20%">Kategoria</th>
+                <th style="width: 15%">Cena za sztukę</th>
+                <th style="width: 10%">Ilość</th>
+                <th style="width: 15%">Cena</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr
+                *ngFor="let item of sectionForm.controls.section.controls; index as j; trackBy: trackItem">
+                <ng-container [formGroup]="item">
+                  <td>
+                    <form-input
+                      [textAlign]="'center'"
+                      formControlName="name"
+                      placeholder="Nazwa produktu"
+                    ></form-input>
+                  </td>
+                  <td class="category">
+                    <select
+                      name="category"
+                      formControlName="category">
+                      <option value="null" disabled selected>Wybierz kategorię</option>
+                      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                      {{ item.value.category? item.value.category : item.value}}
+                    </select>
+                  </td>
+                  <td class="price">
+                    <p>
+                      <form-input
+                        typeInput="price"
+                        [textAlign]="'right'"
+                        [_minWith]="true"
+                        formControlName="price"
+                        placeholder="Cena"
+                      ></form-input>
+                      <span *ngIf="item.value.price">zł</span>
+                    </p>
+                  </td>
+                  <td>
+                    <form-input
+                      typeInput="quantity"
+                      [textAlign]="'center'"
+                      [_minWith]="true"
+                      formControlName="quantity"
+                    ></form-input>
+                  </td>
+                  <td>{{(item.value.price || 0) | singleProductPrice : (item.value.quantity || 0)}} zł
+                    <button class="icon" mat-mini-fab (click)="removeProduct(i, j)">
+                      <mat-icon>clear</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+              </tr>
+              <tr>
+                <td colspan="5" class="button">
+                  <button mat-raised-button (click)="addNewItem(i)">Dodaj nowy produkt</button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="sum">Suma:</td>
+                <td>{{ sectionForm.value.section | sumOfProductValues }} zł</td>
+              </tr>
+              </tbody>
+            </table>
+          </ng-container>
+        </p>
+      </ng-container>
+    </div>
+    <p><button mat-raised-button (click)="addNewSection()">Dodaj nową sekcję</button></p>
+  </ng-container>
+</div>

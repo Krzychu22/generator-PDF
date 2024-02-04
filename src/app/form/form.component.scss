@@ -1,0 +1,98 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: max-content;
+  min-height: 100%;
+  background-color: rgb(82, 86, 89);
+
+  p {
+    display: flex;
+    align-items: center;
+    cursor: default;
+    user-select: none;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    width: calc(21cm - 50px);
+    background-color: white;
+    margin: 20px 0;
+    padding: 50px;
+
+    > .header {
+      display: flex;
+      justify-content: space-between;
+
+      > .cityAndData {
+        display: flex;
+        align-items: center
+      }
+    }
+
+    > .addresses {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      > div {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        position: relative;
+
+        > p {
+          margin: 5px 0;
+        }
+
+        > .icon {
+          position: absolute;
+          right: -48px;
+          top: calc(50% - 20px);
+          background-color: white;
+        }
+      }
+    }
+
+    > .title {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    > .content {
+      position: relative;
+      margin: 0 0 20px 0;
+
+      ::ng-deep .angular-editor .angular-editor-textarea {
+        border: none;
+        resize: none;
+        overflow: hidden;
+      }
+
+      > .icon {
+        position: absolute;
+        right: -48px;
+        top: calc(50% - 20px);
+        background-color: white;
+      }
+    }
+
+    > .footer {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      > p {
+        margin: 5px 0;
+      }
+    }
+  }
+
+  > .printHTML {
+    margin-bottom: 20px;
+  }
+}

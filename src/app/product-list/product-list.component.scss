@@ -1,0 +1,70 @@
+:host {
+  width: 100%;
+
+  table {
+    width: 100%;
+  }
+
+  .title {
+    position: relative;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    position: relative;
+  }
+
+  td {
+    padding: 10px;
+    text-align: center;
+
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .category {
+    > select {
+      width: 100%;
+      font: 400 14px/20px Roboto, sans-serif;
+      border: none;
+      text-align: center;
+    }
+  }
+
+  .price {
+    > p {
+      display: flex;
+      align-items: center;
+      margin: auto 0 auto 0;
+      justify-content: center;
+
+      > span {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  .icon {
+    position: absolute;
+    right: -48px;
+    top: calc(50% - 20px);
+    background-color: white;
+    border: none;
+  }
+
+  .button {
+    text-align: center;
+
+    > button {
+      margin: 10px 0;
+    }
+  }
+
+  .sum {
+    text-align: end;
+    font-weight: bold;
+  }
+}

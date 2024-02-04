@@ -1,0 +1,9 @@
+<textarea
+  #inputNode
+  (input)="autoGrow()"
+  type="text"
+  contenteditable="true"
+  [formControl]="control"
+  (keydown)="filter($event)"
+  placeholder="{{ placeholder }}"
+>{{control.value}}</textarea>
